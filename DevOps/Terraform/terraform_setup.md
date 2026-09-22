@@ -6,3 +6,20 @@
 <img width="1900" height="742" alt="image" src="https://github.com/user-attachments/assets/66ae5bda-fec9-47ef-a108-c6b1838b1ef9" />
 <img width="1281" height="677" alt="image" src="https://github.com/user-attachments/assets/7d067376-97fa-4fa9-ae8b-d0f1efe3fd63" />
 <img width="1907" height="841" alt="image" src="https://github.com/user-attachments/assets/8efba381-80a3-45be-9a80-ecdaf0bb81ab" />
+
+
+# Terraform Installation
+
+````
+sudo apt update
+````
+
+````
+wget -O - https://apt.releases.hashicorp.com/gpg | sudo gpg --dearmor -o /usr/share/keyrings/hashicorp-archive-keyring.gpg
+echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] https://apt.releases.hashicorp.com $(grep -oP '(?<=UBUNTU_CODENAME=).*' /etc/os-release || lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/hashicorp.list
+sudo apt update && sudo apt install terraform -y
+````
+
+````
+terraform --version
+````
