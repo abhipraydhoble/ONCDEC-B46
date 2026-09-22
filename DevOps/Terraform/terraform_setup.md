@@ -42,4 +42,26 @@ aws configure --profile  "tf-user"
  - secret_key
  - region
 
+# create provider.tf file
 
+````
+terraform {
+  required_providers {
+    aws = {
+      source  = "hashicorp/aws"
+      version = "6.66.0"
+    }
+  }
+}
+
+provider "aws" {
+ region = "ap-southeast-1"
+ profile = "tf-abhi"
+}
+````
+
+# Start Terraform
+
+````
+terraform init
+````
