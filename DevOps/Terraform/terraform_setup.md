@@ -33,3 +33,13 @@ sudo ./aws/install
 ````
 aws --version
 ````
+
+# Create Profile
+````
+aws configure --profile  "tf-user"
+````
+ - access_key
+ - secret_key
+ - region
+
+
