@@ -40,45 +40,7 @@
 
 
 
----
-# TF Installation
 
-````
-wget -O - https://apt.releases.hashicorp.com/gpg | sudo gpg --dearmor -o /usr/share/keyrings/hashicorp-archive-keyring.gpg
-echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] https://apt.releases.hashicorp.com $(grep -oP '(?<=UBUNTU_CODENAME=).*' /etc/os-release || lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/hashicorp.list
-sudo apt update && sudo apt install terraform -y
-````
-
-# AWS CLI Install
-
-````
-curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
-unzip awscliv2.zip
-sudo ./aws/install
-````
-
-# Create aws profile 
-
-````
-aws configure --profile "tf-user"
-````
-
-- access key
-- secret key
-- region
-
-# create provider.tf file 
-
-````
-provider "aws" {
-  region = "ap-southeast-1"
-  profile = "tf-user"
-````
-
-# Initialize TF 
-````
-terraformm init
-````
 <img width="1916" height="1000" alt="image" src="https://github.com/user-attachments/assets/638531e9-0ea9-4e49-9cb2-e769a850af52" />
 
 
