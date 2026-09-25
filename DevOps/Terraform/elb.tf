@@ -2,7 +2,7 @@
 # VARIABLES
 ########################################
 variable "ami_id" {
-  default = "ami-0f5ee92e2d63afc18" # change
+  default = "ami-095f155a67469a548" # change
 }
 
 variable "instance_type" {
@@ -15,7 +15,7 @@ variable "instance_type" {
 resource "aws_security_group" "web_sg" {
   name        = "web-sg"
   description = "Allow HTTP and SSH"
-  vpc_id      = "vpc-0b513c39beed873c2" # change
+  vpc_id      = "vpc-079cb5d4718c9e695" # change
 
   ingress {
     from_port   = 80
@@ -49,8 +49,8 @@ resource "aws_security_group" "web_sg" {
 resource "aws_launch_template" "web_lt" {
   name = "web-launch-template"
 
-  image_id      = var.ami_id
-  instance_type = var.instance_type
+  image_id               = var.ami_id
+  instance_type          = var.instance_type
   vpc_security_group_ids = [aws_security_group.web_sg.id]
 
   user_data = base64encode(<<-EOF
@@ -85,7 +85,7 @@ resource "aws_lb_target_group" "tg_home" {
   name     = "tg-home"
   port     = 80
   protocol = "HTTP"
-  vpc_id   = "vpc-0b513c39beed873c2"
+  vpc_id   = "vpc-079cb5d4718c9e695"
 
   health_check {
     path = "/"
@@ -96,7 +96,7 @@ resource "aws_lb_target_group" "tg_laptop" {
   name     = "tg-laptop"
   port     = 80
   protocol = "HTTP"
-  vpc_id   = "vpc-0b513c39beed873c2"
+  vpc_id   = "vpc-079cb5d4718c9e695"
 
   health_check {
     path = "/laptop/"
@@ -107,7 +107,7 @@ resource "aws_lb_target_group" "tg_mobile" {
   name     = "tg-mobile"
   port     = 80
   protocol = "HTTP"
-  vpc_id   = "vpc-0b513c39beed873c2"
+  vpc_id   = "vpc-079cb5d4718c9e695"
 
   health_check {
     path = "/mobile/"
@@ -123,8 +123,8 @@ resource "aws_autoscaling_group" "web_asg" {
   max_size         = 3
 
   vpc_zone_identifier = [
-    "subnet-05bda144578ea9914", # change
-    "subnet-0b6e1ae4003ff61b3"
+    "subnet-0f6b82ce05c7170b7", # change
+    "subnet-09e25a51096df1566"
   ]
 
   launch_template {
@@ -155,8 +155,8 @@ resource "aws_lb" "alb" {
   security_groups    = [aws_security_group.web_sg.id]
 
   subnets = [
-    "subnet-05bda144578ea9914", # change
-    "subnet-0b6e1ae4003ff61b3"
+    "subnet-0f6b82ce05c7170b7", # change
+    "subnet-09e25a51096df1566"
   ]
 }
 
